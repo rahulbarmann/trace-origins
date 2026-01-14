@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  VENDOR
+  ADMIN
+  CONSUMER
+}
+
+enum StageStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String
+  role          UserRole  @default(VENDOR)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  company       Company?
+  sessions      Session[]
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Company {
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  logo        String?
+  userId      String    @unique
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pipelines   Pipeline[]
+}
+
+model Pipeline {
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  companyId   String
+  isTemplate  Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  company     Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  stages      Stage[]
+  products    Product[]
+}
+
+model Stage {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  order       Int
+  pipelineId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  pipeline    Pipeline @relation(fields: [pipelineId], references: [id], onDelete: Cascade)
+  stageData   StageData[]
+}
+
+model Product {
+  id          String    @id @default(uuid())
+  name        String
+  batchId     String
+  pipelineId  String
+  qrCode      String?
+  qrCodeUrl   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  pipeline    Pipeline  @relation(fields: [pipelineId], references: [id], onDelete: Cascade)
+  stageData   StageData[]
+  scans       ProductScan[]
+}
+
+model StageData {
+  id              String      @id @default(uuid())
+  productId       String
+  stageId         String
+  status          StageStatus @default(PENDING)
+  imageUrl        String?
+  imageHash       String?
+  latitude        Float?
+  longitude       Float?
+  timestamp       DateTime    @default(now())
+  metadata        Json?
+  blockchainTxId  String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  
+  product         Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  stage           Stage       @relation(fields: [stageId], references: [id], onDelete: Cascade)
+}
+
+model ProductScan {
+  id        String   @id @default(uuid())
+  productId String
+  ipAddress String?
+  userAgent String?
+  location  String?
+  createdAt DateTime @default(now())
+  
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model BlockchainRecord {
+  id            String   @id @default(uuid())
+  transactionId String   @unique
+  dataHash      String
+  metadata      Json
+  blockNumber   Int?
+  gasUsed       String?
+  createdAt     DateTime @default(now())
+}

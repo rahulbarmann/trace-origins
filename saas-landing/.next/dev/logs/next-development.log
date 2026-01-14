@@ -1,0 +1,40 @@
+[02:01:51.850] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:51.856] Server  ERROR    ⨯ "unhandledRejection:" Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:51.858] Server  ERROR    ⨯ "unhandledRejection: " Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:51.891] Server  ERROR    ⨯ PageNotFoundError: Cannot find module for page: route not found /_not-found/page
+[02:01:52.113] Server  ERROR   TurbopackInternalError: Failed to write page endpoint /_app
+
+Caused by:
+- Expected file content at [project]/node_modules/next/dist/lib/server-external-packages.json
+
+Debug info:
+- Execution of get_written_endpoint_with_issues_operation failed
+- Execution of endpoint_write_to_disk failed
+- Execution of <PageEndpoint as Endpoint>::output failed
+- Failed to write page endpoint /_app
+- Execution of PageEndpoint::output failed
+- Execution of PageEndpoint::internal_ssr_chunk failed
+- Execution of PageEndpoint::internal_ssr_chunk_module failed
+- Execution of *ProcessResult::module failed
+- Execution of *<ModuleAssetContext as AssetContext>::process failed
+- Execution of PagesProject::ssr_module_context failed
+- Execution of *ModuleAssetContext::new failed
+- Execution of get_server_resolve_options_context failed
+- Expected file content at [project]/node_modules/next/dist/lib/server-external-packages.json
+[02:01:52.113] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.116] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.117] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.123] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.124] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.125] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.126] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.128] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.128] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.130] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.131] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.160] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.161] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.163] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:01:52.164] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:03:58.839] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
+[02:03:58.841] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/rahulbarman/Documents/Projects/herbariumlabs/traceability-platform/saas-landing/app'
