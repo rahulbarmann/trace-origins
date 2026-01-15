@@ -2,6 +2,16 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 
+interface RecentScan {
+    id: string;
+    location: string | null;
+    createdAt: Date;
+    product: {
+        name: string;
+        batchId: string;
+    };
+}
+
 export async function GET() {
     const user = await getCurrentUser();
 
@@ -29,7 +39,7 @@ export async function GET() {
             include: { product: { select: { name: true, batchId: true } } },
             orderBy: { createdAt: "desc" },
             take: 10,
-        }),
+        }) as Promise<RecentScan[]>,
         prisma.pipeline.findMany({
             where: { companyId },
             select: {
@@ -56,7 +66,7 @@ export async function GET() {
             products: productCount,
             totalScans,
         },
-        recentScans: recentScans.map((scan) => ({
+        recentScans: recentScans.map((scan: RecentScan) => ({
             id: scan.id,
             productName: scan.product.name,
             batchId: scan.product.batchId,
