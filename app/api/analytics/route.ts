@@ -12,6 +12,19 @@ interface RecentScan {
     };
 }
 
+interface PipelineWithCount {
+    id: string;
+    name: string;
+    _count: {
+        products: number;
+    };
+}
+
+interface ScansByDay {
+    date: Date;
+    count: number;
+}
+
 export async function GET() {
     const user = await getCurrentUser();
 
@@ -47,7 +60,7 @@ export async function GET() {
                 name: true,
                 _count: { select: { products: true } },
             },
-        }),
+        }) as Promise<PipelineWithCount[]>,
         prisma.$queryRaw`
       SELECT DATE(ps."createdAt") as date, COUNT(*)::int as count
       FROM "ProductScan" ps
@@ -57,7 +70,7 @@ export async function GET() {
       AND ps."createdAt" >= NOW() - INTERVAL '30 days'
       GROUP BY DATE(ps."createdAt")
       ORDER BY date DESC
-    ` as Promise<{ date: Date; count: number }[]>,
+    ` as Promise<ScansByDay[]>,
     ]);
 
     return NextResponse.json({
@@ -73,7 +86,7 @@ export async function GET() {
             location: scan.location,
             createdAt: scan.createdAt,
         })),
-        productsByPipeline: productsByPipeline.map((p) => ({
+        productsByPipeline: productsByPipeline.map((p: PipelineWithCount) => ({
             name: p.name,
             count: p._count.products,
         })),
