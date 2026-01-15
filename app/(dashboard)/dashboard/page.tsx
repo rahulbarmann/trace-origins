@@ -40,25 +40,28 @@ export default function DashboardPage() {
     }
 
     return (
-        <div className="space-y-8">
-            <div className="flex items-center justify-between">
+        <div className="space-y-6 md:space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-zinc-100">
+                    <h1 className="text-xl md:text-2xl font-bold text-zinc-100">
                         Dashboard
                     </h1>
-                    <p className="text-zinc-500">
+                    <p className="text-sm md:text-base text-zinc-500">
                         Overview of your traceability platform
                     </p>
                 </div>
-                <Link href="/dashboard/pipelines/new">
-                    <Button className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200">
+                <Link
+                    href="/dashboard/pipelines/new"
+                    className="w-full sm:w-auto"
+                >
+                    <Button className="w-full sm:w-auto bg-zinc-100 text-zinc-900 hover:bg-zinc-200">
                         <Plus className="w-4 h-4 mr-2" />
                         Create Pipeline
                     </Button>
                 </Link>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
                 <Card className="bg-zinc-900/50 border-zinc-800">
                     <CardHeader className="pb-2 flex flex-row items-center justify-between">
                         <CardTitle className="text-sm font-medium text-zinc-500">

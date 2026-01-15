@@ -267,7 +267,7 @@ export default function ProductDetailPage() {
     const totalStages = product.stageData.length;
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
             <input
                 ref={fileInputRef}
                 type="file"
@@ -277,27 +277,33 @@ export default function ProductDetailPage() {
                 onChange={handleFileChange}
             />
 
-            <div className="flex items-start justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-zinc-100">
+                    <h1 className="text-xl md:text-2xl font-bold text-zinc-100">
                         {product.name}
                     </h1>
-                    <p className="text-zinc-500">{product.batchId}</p>
+                    <p className="text-sm md:text-base text-zinc-500">
+                        {product.batchId}
+                    </p>
                 </div>
-                <div className="flex gap-2">
-                    <Link href={`/track/${product.id}`} target="_blank">
+                <div className="flex flex-wrap gap-2">
+                    <Link
+                        href={`/track/${product.id}`}
+                        target="_blank"
+                        className="flex-1 sm:flex-none"
+                    >
                         <Button
                             variant="outline"
-                            className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                            className="w-full sm:w-auto border-zinc-700 text-zinc-300 hover:bg-zinc-800"
                         >
                             <ExternalLink className="w-4 h-4 mr-2" />
-                            View Public Page
+                            View Public
                         </Button>
                     </Link>
                     <Button
                         variant="outline"
                         onClick={handleDelete}
-                        className="border-zinc-700 text-zinc-400 hover:bg-red-900/20 hover:text-red-400 hover:border-red-900"
+                        className="flex-1 sm:flex-none border-zinc-700 text-zinc-400 hover:bg-red-900/20 hover:text-red-400 hover:border-red-900"
                     >
                         <Trash2 className="w-4 h-4 mr-2" />
                         Delete
@@ -307,7 +313,7 @@ export default function ProductDetailPage() {
 
             {updateStatus && (
                 <div
-                    className={`p-4 rounded-lg ${
+                    className={`p-3 md:p-4 rounded-lg text-sm md:text-base ${
                         updateStatus.startsWith("Error")
                             ? "bg-red-900/20 text-red-400 border border-red-900/50"
                             : "bg-blue-900/20 text-blue-400 border border-blue-900/50"
@@ -317,7 +323,7 @@ export default function ProductDetailPage() {
                 </div>
             )}
 
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 gap-6 md:gap-8">
                 <div className="lg:col-span-2 space-y-6">
                     <Card className="bg-zinc-900/50 border-zinc-800">
                         <CardHeader>

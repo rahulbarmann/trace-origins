@@ -42,18 +42,21 @@ export default function PipelinesPage() {
     }
 
     return (
-        <div className="space-y-8">
-            <div className="flex items-center justify-between">
+        <div className="space-y-6 md:space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-zinc-100">
+                    <h1 className="text-xl md:text-2xl font-bold text-zinc-100">
                         Pipelines
                     </h1>
-                    <p className="text-zinc-500">
+                    <p className="text-sm md:text-base text-zinc-500">
                         Manage your product traceability pipelines
                     </p>
                 </div>
-                <Link href="/dashboard/pipelines/new">
-                    <Button className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200">
+                <Link
+                    href="/dashboard/pipelines/new"
+                    className="w-full sm:w-auto"
+                >
+                    <Button className="w-full sm:w-auto bg-zinc-100 text-zinc-900 hover:bg-zinc-200">
                         <Plus className="w-4 h-4 mr-2" />
                         Create Pipeline
                     </Button>
@@ -73,7 +76,7 @@ export default function PipelinesPage() {
                     </CardContent>
                 </Card>
             ) : (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {pipelines.map((pipeline) => (
                         <Link
                             key={pipeline.id}
