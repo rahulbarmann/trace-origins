@@ -12,7 +12,14 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Trash2, ExternalLink, Camera, RefreshCw } from "lucide-react";
+import {
+    Trash2,
+    ExternalLink,
+    Camera,
+    RefreshCw,
+    Download,
+    Share2,
+} from "lucide-react";
 
 interface Stage {
     id: string;
@@ -193,6 +200,43 @@ export default function ProductDetailPage() {
             console.error("Failed to regenerate QR:", error);
         } finally {
             setRegeneratingQR(false);
+        }
+    }
+
+    function handleDownloadQR() {
+        if (!product?.qrCode) return;
+
+        const link = document.createElement("a");
+        link.href = product.qrCode;
+        link.download = `${product.name}-${product.batchId}-qr.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    async function handleShareQR() {
+        if (!product) return;
+
+        const trackUrl = `${window.location.origin}/track/${product.id}`;
+
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: `${product.name} - Product Traceability`,
+                    text: `Track the journey of ${product.name} (${product.batchId})`,
+                    url: trackUrl,
+                });
+            } catch (error) {
+                if ((error as Error).name !== "AbortError") {
+                    await navigator.clipboard.writeText(trackUrl);
+                    setUpdateStatus("Link copied to clipboard!");
+                    setTimeout(() => setUpdateStatus(""), 3000);
+                }
+            }
+        } else {
+            await navigator.clipboard.writeText(trackUrl);
+            setUpdateStatus("Link copied to clipboard!");
+            setTimeout(() => setUpdateStatus(""), 3000);
         }
     }
 
@@ -517,6 +561,27 @@ export default function ProductDetailPage() {
                                     No QR Code
                                 </div>
                             )}
+                            <div className="flex flex-wrap gap-2 justify-center">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={handleDownloadQR}
+                                    disabled={!product.qrCode}
+                                    className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                                >
+                                    <Download className="w-4 h-4 mr-2" />
+                                    Download
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={handleShareQR}
+                                    className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                                >
+                                    <Share2 className="w-4 h-4 mr-2" />
+                                    Share
+                                </Button>
+                            </div>
                             <Button
                                 variant="outline"
                                 size="sm"
