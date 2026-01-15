@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, Package, Layers, QrCode } from "lucide-react";
+import { Plus, Package, Layers, QrCode, ArrowRight } from "lucide-react";
 
 interface Analytics {
     overview: {
@@ -62,37 +62,47 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                <Link href="/dashboard/pipelines">
-                    <Card className="bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer">
-                        <CardHeader className="pb-2 flex flex-row items-center justify-between">
-                            <CardTitle className="text-sm font-medium text-zinc-500">
-                                Total Pipelines
-                            </CardTitle>
-                            <Layers className="w-4 h-4 text-zinc-600" />
-                        </CardHeader>
-                        <CardContent>
+                <Card className="bg-zinc-900/50 border-zinc-800">
+                    <CardHeader className="pb-2 flex flex-row items-center justify-between">
+                        <CardTitle className="text-sm font-medium text-zinc-500">
+                            Total Pipelines
+                        </CardTitle>
+                        <Layers className="w-4 h-4 text-zinc-600" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="flex items-end justify-between">
                             <div className="text-3xl font-bold text-zinc-100">
                                 {analytics?.overview.pipelines || 0}
                             </div>
-                        </CardContent>
-                    </Card>
-                </Link>
+                            <Link href="/dashboard/pipelines">
+                                <div className="w-8 h-8 bg-zinc-800 hover:bg-zinc-700 rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                                    <ArrowRight className="w-4 h-4 text-zinc-400" />
+                                </div>
+                            </Link>
+                        </div>
+                    </CardContent>
+                </Card>
 
-                <Link href="/dashboard/products">
-                    <Card className="bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer">
-                        <CardHeader className="pb-2 flex flex-row items-center justify-between">
-                            <CardTitle className="text-sm font-medium text-zinc-500">
-                                Total Products
-                            </CardTitle>
-                            <Package className="w-4 h-4 text-zinc-600" />
-                        </CardHeader>
-                        <CardContent>
+                <Card className="bg-zinc-900/50 border-zinc-800">
+                    <CardHeader className="pb-2 flex flex-row items-center justify-between">
+                        <CardTitle className="text-sm font-medium text-zinc-500">
+                            Total Products
+                        </CardTitle>
+                        <Package className="w-4 h-4 text-zinc-600" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="flex items-end justify-between">
                             <div className="text-3xl font-bold text-zinc-100">
                                 {analytics?.overview.products || 0}
                             </div>
-                        </CardContent>
-                    </Card>
-                </Link>
+                            <Link href="/dashboard/products">
+                                <div className="w-8 h-8 bg-zinc-800 hover:bg-zinc-700 rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                                    <ArrowRight className="w-4 h-4 text-zinc-400" />
+                                </div>
+                            </Link>
+                        </div>
+                    </CardContent>
+                </Card>
 
                 <Card className="bg-zinc-900/50 border-zinc-800">
                     <CardHeader className="pb-2 flex flex-row items-center justify-between">
