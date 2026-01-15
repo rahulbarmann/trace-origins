@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Trash2, ExternalLink, Camera } from "lucide-react";
+import { Trash2, ExternalLink, Camera, RefreshCw } from "lucide-react";
 
 interface Stage {
     id: string;
@@ -71,6 +71,7 @@ export default function ProductDetailPage() {
     const [loading, setLoading] = useState(true);
     const [updatingStage, setUpdatingStage] = useState<string | null>(null);
     const [updateStatus, setUpdateStatus] = useState<string>("");
+    const [regeneratingQR, setRegeneratingQR] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [selectedStageId, setSelectedStageId] = useState<string | null>(null);
 
@@ -173,6 +174,25 @@ export default function ProductDetailPage() {
 
         if (res.ok) {
             router.push("/dashboard/products");
+        }
+    }
+
+    async function handleRegenerateQR() {
+        if (!product) return;
+        setRegeneratingQR(true);
+
+        try {
+            const res = await fetch(`/api/products/${product.id}`, {
+                method: "PATCH",
+            });
+
+            if (res.ok) {
+                await fetchProduct();
+            }
+        } catch (error) {
+            console.error("Failed to regenerate QR:", error);
+        } finally {
+            setRegeneratingQR(false);
         }
     }
 
@@ -485,7 +505,7 @@ export default function ProductDetailPage() {
                                 Scan to view product timeline
                             </CardDescription>
                         </CardHeader>
-                        <CardContent className="flex justify-center">
+                        <CardContent className="flex flex-col items-center gap-4">
                             {product.qrCode ? (
                                 <img
                                     src={product.qrCode}
@@ -497,6 +517,22 @@ export default function ProductDetailPage() {
                                     No QR Code
                                 </div>
                             )}
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={handleRegenerateQR}
+                                disabled={regeneratingQR}
+                                className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                            >
+                                <RefreshCw
+                                    className={`w-4 h-4 mr-2 ${
+                                        regeneratingQR ? "animate-spin" : ""
+                                    }`}
+                                />
+                                {regeneratingQR
+                                    ? "Regenerating..."
+                                    : "Regenerate QR"}
+                            </Button>
                         </CardContent>
                     </Card>
 
