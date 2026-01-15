@@ -1,4 +1,4 @@
-# TraceChain - Blockchain Product Traceability Platform
+# Trace Origins - Blockchain Product Traceability Platform
 
 A SaaS platform for universal blockchain-based product traceability. Track products across any industry with immutable blockchain records, QR code access, and interactive consumer timelines.
 

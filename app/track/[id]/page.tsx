@@ -145,7 +145,7 @@ export default function TrackPage() {
                         className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 rounded-full transition-colors"
                     >
                         <Shield className="w-4 h-4" />
-                        Go to TraceChain
+                        Go to Trace Origins
                     </Link>
                 </motion.div>
             </div>
@@ -585,7 +585,9 @@ export default function TrackPage() {
                         className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors"
                     >
                         <Shield className="w-4 h-4" />
-                        <span className="text-sm">Powered by TraceChain</span>
+                        <span className="text-sm">
+                            Powered by Trace Origins
+                        </span>
                     </Link>
                     <p className="text-xs text-zinc-600 mt-1">
                         Blockchain-verified product traceability

@@ -63,7 +63,7 @@ export default function RegisterPage() {
                             <Shield className="w-4 h-4 text-zinc-400" />
                         </div>
                         <span className="font-semibold text-xl text-zinc-100">
-                            TraceChain
+                            Trace Origins
                         </span>
                     </Link>
                     <CardTitle className="text-zinc-100">

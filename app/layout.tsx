@@ -10,7 +10,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-    title: "TraceChain - Blockchain Product Traceability",
+    title: "Trace Origins - Blockchain Product Traceability",
     description:
         "Universal blockchain-based product traceability platform for vendors and consumers",
 };

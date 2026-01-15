@@ -17,7 +17,7 @@ export function Navbar() {
                     className="flex items-center gap-2 font-display text-lg font-semibold text-zinc-100"
                 >
                     <Shield className="w-5 h-5" />
-                    TraceChain
+                    Trace Origins
                 </Link>
                 <div className="flex items-center gap-1">
                     {navLinks.map((link) => (

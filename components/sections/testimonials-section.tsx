@@ -5,13 +5,13 @@ import { TestimonialsColumn } from "@/components/ui/testimonials-column";
 
 const testimonials = [
     {
-        text: "TraceChain completely transformed how we track our supply chain. Customers love scanning the QR codes to verify authenticity.",
+        text: "Trace Origins completely transformed how we track our supply chain. Customers love scanning the QR codes to verify authenticity.",
         image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
         name: "Sarah Chen",
         role: "COO at FreshFarms",
     },
     {
-        text: "The blockchain verification gives our customers confidence. We've seen a 40% increase in brand trust since implementing TraceChain.",
+        text: "The blockchain verification gives our customers confidence. We've seen a 40% increase in brand trust since implementing Trace Origins.",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
         name: "Marcus Johnson",
         role: "VP Operations at Luxe Goods",
@@ -35,7 +35,7 @@ const testimonials = [
         role: "Compliance Officer",
     },
     {
-        text: "TraceChain helped us achieve organic certification faster. The transparent tracking impressed our auditors.",
+        text: "Trace Origins helped us achieve organic certification faster. The transparent tracking impressed our auditors.",
         image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
         name: "James Wilson",
         role: "CEO at OrganicHarvest",
@@ -47,7 +47,7 @@ const testimonials = [
         role: "Marketing Director",
     },
     {
-        text: "The custom pipeline feature let us adapt TraceChain to our unique manufacturing process perfectly.",
+        text: "The custom pipeline feature let us adapt Trace Origins to our unique manufacturing process perfectly.",
         image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
         name: "Michael Brown",
         role: "Production Manager",
@@ -96,7 +96,7 @@ export function TestimonialsSection() {
                         What our users say
                     </h2>
                     <p className="text-center mt-4 text-zinc-500 text-lg text-balance">
-                        See what vendors have to say about TraceChain.
+                        See what vendors have to say about Trace Origins.
                     </p>
                 </motion.div>
 

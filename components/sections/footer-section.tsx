@@ -41,7 +41,7 @@ export function FooterSection() {
                             className="flex items-center gap-2 font-display text-xl font-semibold text-zinc-100"
                         >
                             <Shield className="w-5 h-5" />
-                            TraceChain
+                            Trace Origins
                         </Link>
                         <p className="mt-4 text-sm text-zinc-500 max-w-xs">
                             Blockchain-powered product traceability for modern
@@ -154,7 +154,7 @@ export function FooterSection() {
                     transition={{ duration: 0.5, delay: 0.4 }}
                 >
                     <p className="text-sm text-zinc-600">
-                        {new Date().getFullYear()} TraceChain. All rights
+                        {new Date().getFullYear()} Trace Origins. All rights
                         reserved.
                     </p>
                     <div className="flex items-center gap-4">
