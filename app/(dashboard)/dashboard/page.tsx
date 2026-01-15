@@ -62,33 +62,37 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                <Card className="bg-zinc-900/50 border-zinc-800">
-                    <CardHeader className="pb-2 flex flex-row items-center justify-between">
-                        <CardTitle className="text-sm font-medium text-zinc-500">
-                            Total Pipelines
-                        </CardTitle>
-                        <Layers className="w-4 h-4 text-zinc-600" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-3xl font-bold text-zinc-100">
-                            {analytics?.overview.pipelines || 0}
-                        </div>
-                    </CardContent>
-                </Card>
+                <Link href="/dashboard/pipelines">
+                    <Card className="bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer">
+                        <CardHeader className="pb-2 flex flex-row items-center justify-between">
+                            <CardTitle className="text-sm font-medium text-zinc-500">
+                                Total Pipelines
+                            </CardTitle>
+                            <Layers className="w-4 h-4 text-zinc-600" />
+                        </CardHeader>
+                        <CardContent>
+                            <div className="text-3xl font-bold text-zinc-100">
+                                {analytics?.overview.pipelines || 0}
+                            </div>
+                        </CardContent>
+                    </Card>
+                </Link>
 
-                <Card className="bg-zinc-900/50 border-zinc-800">
-                    <CardHeader className="pb-2 flex flex-row items-center justify-between">
-                        <CardTitle className="text-sm font-medium text-zinc-500">
-                            Total Products
-                        </CardTitle>
-                        <Package className="w-4 h-4 text-zinc-600" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-3xl font-bold text-zinc-100">
-                            {analytics?.overview.products || 0}
-                        </div>
-                    </CardContent>
-                </Card>
+                <Link href="/dashboard/products">
+                    <Card className="bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer">
+                        <CardHeader className="pb-2 flex flex-row items-center justify-between">
+                            <CardTitle className="text-sm font-medium text-zinc-500">
+                                Total Products
+                            </CardTitle>
+                            <Package className="w-4 h-4 text-zinc-600" />
+                        </CardHeader>
+                        <CardContent>
+                            <div className="text-3xl font-bold text-zinc-100">
+                                {analytics?.overview.products || 0}
+                            </div>
+                        </CardContent>
+                    </Card>
+                </Link>
 
                 <Card className="bg-zinc-900/50 border-zinc-800">
                     <CardHeader className="pb-2 flex flex-row items-center justify-between">
