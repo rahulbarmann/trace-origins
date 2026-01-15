@@ -359,16 +359,16 @@ export default function ProductDetailPage() {
                                     .map((stageData, index) => (
                                         <div
                                             key={stageData.id}
-                                            className={`p-4 rounded-lg border ${
+                                            className={`p-3 md:p-4 rounded-lg border ${
                                                 stageData.status === "COMPLETED"
                                                     ? "bg-green-900/20 border-green-900/50"
                                                     : "bg-zinc-800/50 border-zinc-700"
                                             }`}
                                         >
-                                            <div className="flex items-center justify-between mb-2">
-                                                <div className="flex items-center gap-3">
+                                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                                                <div className="flex items-center gap-2 sm:gap-3">
                                                     <span
-                                                        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                                                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium shrink-0 ${
                                                             stageData.status ===
                                                             "COMPLETED"
                                                                 ? "bg-green-500 text-white"
@@ -377,23 +377,23 @@ export default function ProductDetailPage() {
                                                     >
                                                         {index + 1}
                                                     </span>
-                                                    <span className="font-medium text-zinc-200">
+                                                    <span className="font-medium text-sm sm:text-base text-zinc-200">
                                                         {stageData.stage.name}
                                                     </span>
                                                 </div>
-                                                <div className="flex items-center gap-2">
+                                                <div className="flex items-center gap-1 sm:gap-2 ml-9 sm:ml-0">
                                                     {stageData.blockchainTxId && (
-                                                        <Badge className="bg-green-900/50 text-green-400 border-green-800">
+                                                        <Badge className="text-xs bg-green-900/50 text-green-400 border-green-800">
                                                             On-Chain
                                                         </Badge>
                                                     )}
                                                     <Badge
-                                                        className={
+                                                        className={`text-xs ${
                                                             stageData.status ===
                                                             "COMPLETED"
                                                                 ? "bg-green-900/50 text-green-400 border-green-800"
                                                                 : "bg-zinc-800 text-zinc-400 border-zinc-700"
-                                                        }
+                                                        }`}
                                                     >
                                                         {stageData.status}
                                                     </Badge>
@@ -402,7 +402,7 @@ export default function ProductDetailPage() {
 
                                             {stageData.status ===
                                             "COMPLETED" ? (
-                                                <div className="ml-11 space-y-3 text-sm">
+                                                <div className="ml-9 sm:ml-11 space-y-3 text-sm">
                                                     {(stageData.imageUrl ||
                                                         stageData.metadata
                                                             ?.imageCid) && (
@@ -421,12 +421,12 @@ export default function ProductDetailPage() {
                                                                         .stage
                                                                         .name
                                                                 }
-                                                                className="w-32 h-32 object-cover rounded-lg bg-zinc-800"
+                                                                className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg bg-zinc-800"
                                                             />
                                                         </div>
                                                     )}
 
-                                                    <div className="grid grid-cols-2 gap-4 text-zinc-400">
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-zinc-400 text-xs sm:text-sm">
                                                         <div>
                                                             <span className="text-zinc-500">
                                                                 Completed:
@@ -456,8 +456,8 @@ export default function ProductDetailPage() {
 
                                                     {stageData.metadata
                                                         ?.imageCid && (
-                                                        <div className="p-2 bg-purple-900/20 rounded border border-purple-900/50 text-purple-400">
-                                                            <span className="text-purple-500">
+                                                        <div className="p-2 bg-purple-900/20 rounded border border-purple-900/50 text-purple-400 overflow-hidden">
+                                                            <span className="text-purple-500 text-xs">
                                                                 IPFS Image:
                                                             </span>
                                                             <br />
@@ -472,8 +472,8 @@ export default function ProductDetailPage() {
                                                     )}
 
                                                     {stageData.blockchainTxId && (
-                                                        <div className="p-2 bg-green-900/20 rounded border border-green-900/50">
-                                                            <span className="text-green-500">
+                                                        <div className="p-2 bg-green-900/20 rounded border border-green-900/50 overflow-hidden">
+                                                            <span className="text-green-500 text-xs">
                                                                 Blockchain TX:
                                                             </span>
                                                             <br />
@@ -510,7 +510,7 @@ export default function ProductDetailPage() {
                                                     )}
                                                 </div>
                                             ) : (
-                                                <div className="ml-11">
+                                                <div className="ml-9 sm:ml-11">
                                                     <Button
                                                         size="sm"
                                                         onClick={() =>
@@ -523,9 +523,9 @@ export default function ProductDetailPage() {
                                                             updatingStage ===
                                                             stageData.stage.id
                                                         }
-                                                        className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200"
+                                                        className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200 text-xs sm:text-sm"
                                                     >
-                                                        <Camera className="w-4 h-4 mr-2" />
+                                                        <Camera className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                                                         {updatingStage ===
                                                         stageData.stage.id
                                                             ? "Processing..."
