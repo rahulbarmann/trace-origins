@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Layers } from "lucide-react";
+import { Plus, Sparkles } from "lucide-react";
 
 interface Pipeline {
     id: string;
@@ -52,27 +52,61 @@ export default function PipelinesPage() {
                         Manage your product traceability pipelines
                     </p>
                 </div>
-                <Link
-                    href="/dashboard/pipelines/new"
-                    className="w-full sm:w-auto"
-                >
-                    <Button className="w-full sm:w-auto bg-zinc-100 text-zinc-900 hover:bg-zinc-200">
-                        <Plus className="w-4 h-4 mr-2" />
-                        Create Pipeline
-                    </Button>
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                    <Link
+                        href="/dashboard/pipelines/ai"
+                        className="w-full sm:w-auto"
+                    >
+                        <Button className="w-full sm:w-auto bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white">
+                            <Sparkles className="w-4 h-4 mr-2" />
+                            AI Copilot
+                        </Button>
+                    </Link>
+                    <Link
+                        href="/dashboard/pipelines/new"
+                        className="w-full sm:w-auto"
+                    >
+                        <Button
+                            variant="outline"
+                            className="w-full sm:w-auto border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                        >
+                            <Plus className="w-4 h-4 mr-2" />
+                            Manual Create
+                        </Button>
+                    </Link>
+                </div>
             </div>
 
             {pipelines.length === 0 ? (
                 <Card className="bg-zinc-900/50 border-zinc-800">
                     <CardContent className="py-12 text-center">
-                        <Layers className="w-12 h-12 mx-auto mb-4 text-zinc-600" />
-                        <p className="text-zinc-500 mb-4">No pipelines yet</p>
-                        <Link href="/dashboard/pipelines/new">
-                            <Button className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200">
-                                Create Your First Pipeline
-                            </Button>
-                        </Link>
+                        <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-violet-500/20 to-blue-500/20 rounded-2xl flex items-center justify-center">
+                            <Sparkles className="w-8 h-8 text-violet-400" />
+                        </div>
+                        <h3 className="text-lg font-semibold text-zinc-100 mb-2">
+                            Create Your First Pipeline
+                        </h3>
+                        <p className="text-zinc-500 mb-6 max-w-md mx-auto">
+                            Use our AI Copilot to describe your supply chain in
+                            natural language and automatically generate a
+                            complete pipeline.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                            <Link href="/dashboard/pipelines/ai">
+                                <Button className="bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white">
+                                    <Sparkles className="w-4 h-4 mr-2" />
+                                    Try AI Copilot
+                                </Button>
+                            </Link>
+                            <Link href="/dashboard/pipelines/new">
+                                <Button
+                                    variant="outline"
+                                    className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                                >
+                                    Create Manually
+                                </Button>
+                            </Link>
+                        </div>
                     </CardContent>
                 </Card>
             ) : (
